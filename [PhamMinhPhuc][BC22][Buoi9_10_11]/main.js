@@ -1,5 +1,6 @@
 // tao lop doi tuong dsnv tu lop doi tuong DanhSachNhanVien()
 var dsnv = new DanhSachNhanVien();
+var validation = new Validation();
 
 getLocalStorage();
 
@@ -13,14 +14,27 @@ function ChuoiThongTinNhanVien() {
     var EmailNV = getEle("email").value;
     var MatkhauNV = getEle("password").value;
     var NgaylamNV = getEle("datepicker").value;
-    var LuongNV = getEle("luongCB").value * 1;
+    var LuongNV = getEle("luongCB").value;
     var ChucvuNV = getEle("chucvu").value;
     var GiolamNV = getEle("gioLam").value;
     // flag(cờ)
     var isvalid = true;
-    // validation
-    // isvalid = validation.kiemTraRong(TaikhoanNV, "divErrorTaiKhoan", "tai khoan khong duoc rong");
-    var hafda = validation.alue();
+    // validation tai khoan
+    isvalid &= validation.kiemTraRong(TaikhoanNV, "divErrorTaiKhoan", "(*)Tài khoản không được rỗng") && validation.kiemTraDoDaiKyTu(TaikhoanNV, "divErrorTaiKhoan", "(*)Độ dài tài khoản từ 4-6 ký tự ");
+
+    isvalid &= validation.kiemTraRong(TenNV, "divErrorTen", "(*)Tên không được rỗngg") && validation.kiemTraChuoiKyTu(TenNV, "divErrorTen", "(*)Tên nhân viên không đúng định dạng ");;
+
+    isvalid &= validation.kiemTraRong(EmailNV, "divErrorEmail", "(*)Email không được rỗng") && validation.kiemTraEmail(EmailNV, "divErrorEmail", "(*)Tên Email không đúng định dạng ");;;
+
+    isvalid &= validation.kiemTraRong(MatkhauNV, "divErrorPass", "(*)Mật khẩu không được rỗng");
+
+    isvalid &= validation.kiemTraRong(NgaylamNV, "divErrorNgaylam", "(*)Ngày làm không được rỗng");
+
+    isvalid &= validation.kiemTraRong(LuongNV, "divErrorLuongCB", "(*)Lương không được rỗng");
+
+    isvalid &= validation.kiemTraRong(ChucvuNV, "divErrorChucvu", "(*)Chức vụ không được rỗng");
+
+    isvalid &= validation.kiemTraRong(GiolamNV, "divErrorGiolam", "(*)Giờ làm không được rỗng");
     // var hafda = testne();
 
     // if (TaikhoanNV === "") {

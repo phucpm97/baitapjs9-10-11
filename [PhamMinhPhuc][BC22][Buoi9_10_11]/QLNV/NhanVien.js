@@ -11,18 +11,18 @@ function ThongtinNhanVien(_TKNV, _tenNV, _emailNV, _matkhauNV, _ngaylamNV, _luon
     this.XepChuyenCan = 0;
     this.LuongChucvu = function() {
         if (this.chucvuNV === "Sếp") {
-            this.DiemTB = this.luongNV * 3;
+            this.DiemTB = parseFloat(this.luongNV) * 3;
         } else if (this.chucvuNV === "Trưởng phòng") {
-            this.DiemTB = this.luongNV * 2;
+            this.DiemTB = parseFloat(this.luongNV) * 2;
         } else { this.DiemTB = this.luongNV; }
     };
 
     this.xepLoai = function() {
-        if (192 <= this.giolamNV) {
+        if (192 <= parseFloat(this.luongNV)) {
             return this.XepChuyenCan = "Nhân viên Xuất sắc";
-        } else if (176 <= this.giolamNV && this.giolamNV < 192) {
+        } else if (176 <= parseFloat(this.luongNV) && parseFloat(this.luongNV) < 192) {
             return this.XepChuyenCan = "Nhân viên giỏi";
-        } else if (160 <= this.giolamNV && this.giolamNV < 176) {
+        } else if (160 <= parseFloat(this.luongNV) && parseFloat(this.luongNV)) {
             return this.XepChuyenCan = "Nhân viên khá";
         } else {
             return this.XepChuyenCan = "Nhân viên trung bình";
