@@ -69,11 +69,10 @@ function Validation() {
         getEle(errorId).innerHTML = mess;
         getEle(errorId).style.display = "block";
         return false;
-        // mat khau hop le:#sg3Sg.2
+        // mat khau hop le: #sg3Sg.2
     };
-
     this.kiemTraNgay = function(value, errorId, mess) {
-        var Date = "+yyyy / mm / dd or yyyy - mm - dd";
+        var Date = /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/;
         if (value.match(Date)) {
             // hop le
             getEle(errorId).innerHTML = "";
@@ -85,8 +84,8 @@ function Validation() {
         getEle(errorId).style.display = "block";
         return false;
     };
-    this.kiemTraTienLuong = function(value, errorId, mess) {
-        var Number = "/^[0-9]+$/";
+    this.kiemTraSoSopLe = function(value, errorId, mess) {
+        var Number = /^[0-9]+$/;
         if (value.match(Number)) {
             // hop le
             getEle(errorId).innerHTML = "";
@@ -99,16 +98,19 @@ function Validation() {
         return false;
     };
     this.kiemTraChucVu = function(value, errorId, mess) {
-        var chuc = 0;
-        if (chuc === "Chọn chức vụ") {
+        if (value === "Chọn chức vụ") {
             // hop le
-            getEle(errorId).innerHTML = "";
-            getEle(errorId).style.display = "none";
-            return true;
+            getEle(errorId).innerHTML = mess;
+            getEle(errorId).style.display = "block";
+            return false;
         }
         // ko hop le
-        getEle(errorId).innerHTML = mess;
-        getEle(errorId).style.display = "block";
-        return false;
+        getEle(errorId).innerHTML = "";
+        getEle(errorId).style.display = "none";
+        return true;
     };
 }
+// mat khau hop le: #sg3Sg.2
+// Date: /^(\d{1,2})(\/|-)(\d{1,2})(\/|-)(\d{4})$/  +or  /^\d{2}-\d{2}-\d{4}$/
+// + yyyy/mm/dd or yyyy-mm-dd   yyyy/mm/dd
+// /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/

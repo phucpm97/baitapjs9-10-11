@@ -18,42 +18,41 @@ function ChuoiThongTinNhanVien() {
     var ChucvuNV = getEle("chucvu").value;
     var GiolamNV = getEle("gioLam").value;
     // flag(cờ)
-    var isvalid = true;
+    var isValid = true;
     // validation tai khoan
-    isvalid &= validation.kiemTraRong(TaikhoanNV, "divErrorTaiKhoan", "(*)Tài khoản không được rỗng") && validation.kiemTraDoDaiKyTu(TaikhoanNV, "divErrorTaiKhoan", "(*)Độ dài tài khoản từ 4-6 ký tự ");
+    isValid &= validation.kiemTraRong(TaikhoanNV, "divErrorTaiKhoan", "(*)Tài khoản không được rỗng") && validation.kiemTraDoDaiKyTu(TaikhoanNV, "divErrorTaiKhoan", "(*)Độ dài tài khoản từ 4-6 ký tự ");
 
-    isvalid &= validation.kiemTraRong(TenNV, "divErrorTen", "(*)Tên không được rỗngg") && validation.kiemTraChuoiKyTu(TenNV, "divErrorTen", "(*)Tên nhân viên không đúng định dạng ");
+    isValid &= validation.kiemTraRong(TenNV, "divErrorTen", "(*)Tên không được rỗngg") && validation.kiemTraChuoiKyTu(TenNV, "divErrorTen", "(*)Tên nhân viên không đúng định dạng ");
 
-    isvalid &= validation.kiemTraRong(EmailNV, "divErrorEmail", "(*)Email không được rỗng") && validation.kiemTraEmail(EmailNV, "divErrorEmail", "(*)Tên Email không đúng định dạng ");
+    isValid &= validation.kiemTraRong(EmailNV, "divErrorEmail", "(*)Email không được rỗng") && validation.kiemTraEmail(EmailNV, "divErrorEmail", "(*)Tên Email không đúng định dạng ");
 
-    isvalid &= validation.kiemTraRong(MatkhauNV, "divErrorPass", "(*)Mật khẩu không được rỗng") && validation.kiemTraMatKhau(MatkhauNV, "divErrorPass", "(*)Tên mật khẩu phải có ký tự đặc biệt ");
+    isValid &= validation.kiemTraRong(MatkhauNV, "divErrorPass", "(*)Mật khẩu không được rỗng") && validation.kiemTraMatKhau(MatkhauNV, "divErrorPass", "(*)Tên mật khẩu phải có ký tự đặc biệt ");
 
-    isvalid &= validation.kiemTraRong(NgaylamNV, "divErrorNgaylam", "(*)Ngày làm không được rỗng") && validation.kiemTraNgay(NgaylamNV, "divErrorNgaylam", "(*)Ngày làm không hợp lệ ");
+    isValid &= validation.kiemTraRong(NgaylamNV, "divErrorNgaylam", "(*)Ngày làm không được rỗng") && validation.kiemTraNgay(NgaylamNV, "divErrorNgaylam", "(*)Ngày làm không hợp lệ ");
 
-    isvalid &= validation.kiemTraRong(LuongNV, "divErrorLuongCB", "(*)Lương không được rỗng") && validation.kiemTraTienLuong(LuongNV, "divErrorLuongCB", "(*)Nhập số không hợp lệ ");
+    isValid &= validation.kiemTraRong(LuongNV, "divErrorLuongCB", "(*)Lương không được rỗng") && validation.kiemTraSoSopLe(LuongNV, "divErrorLuongCB", "(*)Nhập số không hợp lệ ");
 
-    isvalid &= validation.kiemTraRong(ChucvuNV, "divErrorChucvu", "(*)Chức vụ không được rỗng") && validation.kiemTraChucVu(ChucvuNV, "divErrorChucvu", "(*)Nhập số không hợp lệ ");
+    isValid &= validation.kiemTraRong(ChucvuNV, "divErrorChucvu", "(*)Chức vụ không được rỗng") && validation.kiemTraChucVu(ChucvuNV, "divErrorChucvu", "(*)Bạn chưa chọn chức vụ");
 
-    isvalid &= validation.kiemTraRong(GiolamNV, "divErrorGiolam", "(*)Giờ làm không được rỗng");
+    isValid &= validation.kiemTraRong(GiolamNV, "divErrorGiolam", "(*)Giờ làm không được rỗng") && validation.kiemTraSoSopLe(GiolamNV, "divErrorGiolam", "(*)Nhập số không hợp lệ ");
     // var hafda = testne();
 
     // if (TaikhoanNV === "") {
     //     getEle("divErrorTaiKhoan").innerHTML = "Tài khoản không được để rỗng";
     //     getEle("divErrorTaiKhoan").style.display = "block";
-    //     isvalid = false;
+    //     isValid = false;
     // } else {
     //     getEle("divErrorTaiKhoan").innerHTML = "";
     //     getEle("divErrorTaiKhoan").style.display = "none";
-    //     isvalid = true;
+    //     isValid = true;
     // }
     // check form
-    if (!isvalid) return null;
+    if (!isValid) return null;
+
     var nhanvien = new ThongtinNhanVien(TaikhoanNV, TenNV, EmailNV, MatkhauNV, NgaylamNV, LuongNV, ChucvuNV, GiolamNV);
     nhanvien.LuongChucvu();
     nhanvien.xepLoai();
     return nhanvien;
-
-
 }
 
 getEle("btnThemNV").addEventListener("click", function() {

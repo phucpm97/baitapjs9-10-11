@@ -18,11 +18,11 @@ function ThongtinNhanVien(_TKNV, _tenNV, _emailNV, _matkhauNV, _ngaylamNV, _luon
     };
 
     this.xepLoai = function() {
-        if (192 <= parseFloat(this.luongNV)) {
+        if (192 <= parseFloat(this.giolamNV)) {
             return this.XepChuyenCan = "Nhân viên Xuất sắc";
-        } else if (176 <= parseFloat(this.luongNV) && parseFloat(this.luongNV) < 192) {
+        } else if (176 <= parseFloat(this.giolamNV) && parseFloat(this.giolamNV) < 192) {
             return this.XepChuyenCan = "Nhân viên giỏi";
-        } else if (160 <= parseFloat(this.luongNV) && parseFloat(this.luongNV)) {
+        } else if (160 <= parseFloat(this.giolamNV) && parseFloat(this.giolamNV)) {
             return this.XepChuyenCan = "Nhân viên khá";
         } else {
             return this.XepChuyenCan = "Nhân viên trung bình";
